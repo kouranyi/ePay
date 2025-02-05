@@ -76,3 +76,6 @@ dependencies {
     implementation(libs.gson)
 
 }
+kapt {
+    correctErrorTypes = true
+}
