@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class TransDataEntity(
     @PrimaryKey(autoGenerate = true) val id:Int=0,
     val amount:Double,
-    val timeStamp:Long
+    val timeStamp:String
 )
