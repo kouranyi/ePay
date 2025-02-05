@@ -1,4 +1,4 @@
-package com.efinance.epay
+package com.efinance.epay.ui.enteramount
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PaymentViewModel @Inject constructor(private val repository: TransactionRepository) : ViewModel() {
-    private val _paymentResult = MutableLiveData<State<PaymentResponse>>()
-    val paymentResult: LiveData<State<PaymentResponse>> get() = _paymentResult
+    private val _paymentResult = MutableLiveData<State<PaymentResponse>?>()
+    val paymentResult: MutableLiveData<State<PaymentResponse>?> get() = _paymentResult
 
     fun processPayment(name: String, transData: TransactionData) = viewModelScope.launch {
         _paymentResult.postValue(State.Loading())
@@ -33,5 +33,8 @@ class PaymentViewModel @Inject constructor(private val repository: TransactionRe
         } catch (e: Exception) {
             _paymentResult.postValue(State.Error(e.message ?: "Error"))
         }
+    }
+    fun onPaymentResultHandled() {
+        _paymentResult.value = null
     }
 }
