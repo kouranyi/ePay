@@ -48,6 +48,11 @@ class TransactionHistoryFragment : Fragment() {
 
     private fun observeTransactions() {
         viewModel.transactions.observe(viewLifecycleOwner) { transactions ->
+            if (transactions.isEmpty()) {
+                binding.noTransactionTextView.visibility = View.VISIBLE
+            } else {
+                binding.noTransactionTextView.visibility = View.GONE
+            }
             transactionAdapter.submitList(transactions)
         }
     }
