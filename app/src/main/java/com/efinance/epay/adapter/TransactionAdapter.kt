@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.efinance.epay.R
 import com.efinance.epay.data.local.TransDataEntity
+import com.efinance.epay.utils.convertToSimplifiedTimestamp
 
 
 class TransactionAdapter(
@@ -34,7 +35,7 @@ class TransactionAdapter(
 
         fun bind(transaction: TransDataEntity, onDeleteClick: (TransDataEntity) -> Unit) {
             amountTextView.text = "${transaction.amount}"
-            dateTextView.text = transaction.timeStamp
+            dateTextView.text = convertToSimplifiedTimestamp(transaction.timeStamp)
             deleteIcon.setOnClickListener { onDeleteClick(transaction) }
         }
     }

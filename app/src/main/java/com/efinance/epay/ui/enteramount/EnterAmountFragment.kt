@@ -12,6 +12,7 @@ import com.efinance.epay.R
 import com.efinance.epay.data.remote.TransactionData
 import com.efinance.epay.databinding.FragmentEnterAmountBinding
 import com.efinance.epay.utils.State
+import com.efinance.epay.utils.checkForInternet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -92,7 +93,11 @@ class EnterAmountFragment : Fragment() {
     }
 
     private fun startPaymentProcess(amount: String) {
-        viewModel.processPayment("Sale Transaction", TransactionData(amount.toDouble(), 1, 1))
+        if(checkForInternet(requireContext())){
+            viewModel.processPayment("Sale Transaction", TransactionData(amount.toDouble(), 1, 1))
+        }else{
+            Toast.makeText(requireContext(), "No Internet Connection", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {
