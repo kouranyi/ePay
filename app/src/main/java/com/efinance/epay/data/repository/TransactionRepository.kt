@@ -21,7 +21,7 @@ class TransactionRepository @Inject constructor(
 
     suspend fun saveTransaction(transaction: TransDataEntity) = dao.insertTransaction(transaction)
 
-    fun getAllTransactions(): LiveData<List<TransDataEntity>> = dao.getAllTransactions()
+    suspend fun getAllTransactions(): List<TransDataEntity> = dao.getAllTransactions()
 
     suspend fun deleteTransaction(transaction: TransDataEntity) = dao.deleteTransaction(transaction)
 }

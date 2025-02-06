@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_enter_amount" />
     <fragment
         android:id="@+id/transactionHistoryFragment"
-        android:name="com.efinance.epay.ui.TransactionHistoryFragment"
+        android:name="com.efinance.epay.ui.history.TransactionHistoryFragment"
         android:label="fragment_transaction_history"
         tools:layout="@layout/fragment_transaction_history" />
 </navigation>

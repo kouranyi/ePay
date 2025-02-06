@@ -14,5 +14,5 @@ interface TransDataDao{
     @Delete
     suspend fun deleteTransaction(transaction: TransDataEntity)
     @Query("SELECT * FROM transData ORDER BY timestamp DESC")
-    fun getAllTransactions(): LiveData<List<TransDataEntity>>
+    suspend fun getAllTransactions(): List<TransDataEntity>
 }
